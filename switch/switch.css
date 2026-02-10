@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 .switch input{
   display: none;
 }
@@ -8,20 +12,32 @@
   background-color: #D0D0D0;
   display: block;
   position: relative;
+  cursor: pointer;
+  border-radius: 28px;
 }
 
-.switch .slider::before{
-  content: "";
+.switch .icon{
   position: absolute;
   top: 4px;
   left: 4px;
   width:20px;
   height: 20px;
   background-color: white;
+  transition: 0.5s;
+  z-index: 9999;
+  border-radius: 50%;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d0d0d0;
+  transform: rotate(180deg);
 }
 
-.switch input:checked + .slider::before{
+.switch input:checked + .slider .icon{
   left: 36px;
+    color: #1565c0;
+    transform: rotate(360deg);
 }
 
 .switch input:checked + .slider{

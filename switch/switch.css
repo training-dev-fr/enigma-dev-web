@@ -1,0 +1,29 @@
+.switch input{
+  display: none;
+}
+
+.switch .slider{
+  width: 60px;
+  height: 28px;
+  background-color: #D0D0D0;
+  display: block;
+  position: relative;
+}
+
+.switch .slider::before{
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width:20px;
+  height: 20px;
+  background-color: white;
+}
+
+.switch input:checked + .slider::before{
+  left: 36px;
+}
+
+.switch input:checked + .slider{
+  background-color: #1565c0;
+}

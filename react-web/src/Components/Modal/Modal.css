@@ -8,10 +8,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .modal-content{
     background-color: #303030;
     border-radius: 15px;
     padding: 25px;
+    position: relative;
+    cursor: default;
+}
+
+.modal .close-btn{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+    cursor: pointer;
 }

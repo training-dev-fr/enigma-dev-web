@@ -1,0 +1,29 @@
+.user{
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    background-color: #303030;
+    border-radius: 12px;
+    align-items: center;
+    gap: 10px;
+}
+
+.user .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.user .name{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.user .university{
+    font-style: italic;
+}
+
+.user .email{
+    font-size: 14px
+}

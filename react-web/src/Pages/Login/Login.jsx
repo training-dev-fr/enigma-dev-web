@@ -1,12 +1,14 @@
 import { useRef, useState } from "react";
 import "./Login.css"
-import PasswordField from "./PasswordField"
+import PasswordField from "../../Components/PasswordField";
+import { Link, useNavigate } from "react-router";
 
 export default function Login() {
     const passwordRef = useRef();
     const emailRef = useRef();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleReset = () => {
         emailRef.current.value = "";
@@ -15,8 +17,9 @@ export default function Login() {
 
     const handleConnect = () => {
         if(!passwordRef.current.reportValidity(/[a-zA-Z0-9]{6,}/)){
-            alert("Format de mot de passe invalide : " + passwordRef.current.getValue())
-        } 
+            return alert("Format de mot de passe invalide : " + passwordRef.current.getValue())
+        }
+        navigate("/Product")
     }
     return (
         <div className="login">
@@ -28,6 +31,7 @@ export default function Login() {
                 <label> Mot de passe</label>
                 <PasswordField ref={passwordRef} onKeyUp={setPassword} />
             </div>
+            <Link to="/SignIn">Pas encore de compte?</Link>
             <button onClick={handleConnect}>Connexion</button>
             <button onClick={handleReset}>Réinitialiser</button>
         </div>

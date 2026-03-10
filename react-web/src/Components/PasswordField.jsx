@@ -1,12 +1,28 @@
 import { Eye, EyeOff } from "lucide-react"
 import "./PasswordField.css"
-import { useState } from "react";
+import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 
-export default function PasswordField({ref}) {
+const PasswordField = forwardRef(({onKeyUp},ref) => {
     const [isVisible, setIsVisible] = useState(false);
+    const [error, setError] = useState(false);
+    const passwordRef = useRef();
+
+    useImperativeHandle(ref, () => ({
+        clear: () => passwordRef.current.value = "",
+        reportValidity: (regex) => {
+            if(regex.test(passwordRef.current.value)){
+                setError(false);
+                return true;
+            } else{
+                setError(true);
+                return false;
+            }
+        },
+        getValue: () => passwordRef.current.value
+    }),[]);
     return (
-        <div className="password-field">
-            <input ref={ref} type={isVisible ? "text" : "password"} />
+        <div className={`password-field ${error?"error":""}`}>
+            <input type={isVisible ? "text" : "password"} onKeyUp={(e) => onKeyUp(e.target.value)} ref={passwordRef} />
             <div className="icon" onClick={() => setIsVisible(!isVisible)}>
                 {isVisible &&
                     <Eye />
@@ -17,4 +33,6 @@ export default function PasswordField({ref}) {
             </div>
         </div>
     )
-}
+})
+
+export default PasswordField;

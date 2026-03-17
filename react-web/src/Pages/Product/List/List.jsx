@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import "./List.css"
 import User from './../../../Components/User';
+import AuthContext from "../../../Context/auth.context";
 
 export default function UserList() {
     const [userList, setUserList] = useState([]);
     const [term, setTerm] = useState("");
+    const {auth} = useContext(AuthContext);
 
     useEffect(() => {
+        console.log(auth);
         fetch('https://dummyjson.com/users/search?q=' + term)
             .then(res => res.json())
             .then(data => setUserList(data.users));

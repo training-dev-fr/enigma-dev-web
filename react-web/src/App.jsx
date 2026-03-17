@@ -11,48 +11,51 @@ import List from './Pages/Product/List/List.jsx';
 import Detail from './Pages/Product/Detail/Detail.jsx';
 import Form from './Pages/Product/Form/Form.jsx';
 import Modal from './Components/Modal/Modal.jsx';
+import AuthContext from './Context/auth.context.jsx';
 
 export default function App() {
   const modalRef = useRef();
+  const [auth, setAuth] = useState();
 
   useEffect(() => {
     modalRef.current.disableNativeClose();
     const read = localStorage.getItem('read');
-    if(!read){
+    if (!read) {
       modalRef.current.open();
     }
-  },[])
+  }, [])
 
   const handleRead = () => {
-    localStorage.setItem('read',true);
+    localStorage.setItem('read', true);
     modalRef.current.close();
   }
-  
+
   return (
     <div className='app'>
-
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<LayoutHome />} >
-            <Route path="" element={<Home />} />
-            <Route path="Login" element={<Login />} />
-            <Route path="SignIn" element={<SignIn />} />
-          </Route>
-          <Route path="/Product" element={<Layout />}>
-            <Route path="" element={<List />} />
-            <Route path="Detail/:id" element={<Detail />} />
-            <Route path="Form" element={<Form />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-      <Modal content="Texte de la modal" ref={modalRef}>
-        <div className="content">
-          <div className="title">V5.3.18</div>
-          <div className="body">Information de mise à jour</div>
-          <button onClick={handleRead}>J'ai compris</button>
-        </div>
-      </Modal>
+      <AuthContext.Provider value={{ auth, setAuth }}>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<LayoutHome />} >
+              <Route path="" element={<Home />} />
+              <Route path="Login" element={<Login />} />
+              <Route path="SignIn" element={<SignIn />} />
+            </Route>
+            <Route path="/Product" element={<Layout />}>
+              <Route path="" element={<List />} />
+              <Route path="Detail/:id" element={<Detail />} />
+              <Route path="Form" element={<Form />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+        <Modal content="Texte de la modal" ref={modalRef}>
+          <div className="content">
+            <div className="title">V5.3.18</div>
+            <div className="body">Information de mise à jour</div>
+            <button onClick={handleRead}>J'ai compris</button>
+          </div>
+        </Modal>
+      </AuthContext.Provider>
     </div>
   )
 }

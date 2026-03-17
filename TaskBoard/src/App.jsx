@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
-import './App.css'
 import './theme.css'
+import './App.css'
 import Navbar from './Components/Navbar/Navbar'
 import Task from './Pages/Task/Task'
 import Details from './Pages/Task/Detail/Details'

@@ -8,6 +8,7 @@ const ThemeProvider = ({children}) => {
     const [theme, setTheme] = useState(themeStorage ? themeStorage : "light");
 
     const toggleTheme = () => {
+        localStorage.setItem("theme",theme === "light"?"dark":"light")
         setTheme(currentValue => currentValue === "light"?"dark":"light");
     }
 

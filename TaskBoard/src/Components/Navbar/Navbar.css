@@ -3,8 +3,7 @@
     position: fixed;
     display: flex;
     justify-content: space-between;
-    background-color: var(--primary--light);
-    color: var(--text-secondary);
+    background-color: var(--primary);
 }
 
 .navbar .link{
@@ -16,4 +15,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--text-primary);
 }

@@ -12,6 +12,11 @@ body {
     background-color: #F0F0F0;
 }
 
+.content {
+    display: flex;
+    gap: 10px;
+}
+
 .card {
     display: flex;
     flex-direction: column;

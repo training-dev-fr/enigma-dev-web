@@ -1,13 +1,25 @@
 import { NavLink } from "react-router"
 import "./Navbar.css"
-import { Home } from "lucide-react"
+import { Home, Moon, Sun } from "lucide-react"
+import { useTheme } from "../../Context/theme.context"
 
 export default function Navbar() {
+    const { theme, toggleTheme } = useTheme();
     return (
         <div className="navbar">
-            <NavLink to="/"><Home /></NavLink>
-            <NavLink to="/Task">Tâches</NavLink>
-            <NavLink to="/Add">Ajouter une tâche</NavLink>
+            <div className="link">
+                <NavLink className="navlink" to="/"><Home /></NavLink>
+                <NavLink className="navlink" to="/Task">Tâches</NavLink>
+                <NavLink className="navlink" to="/Add">Ajouter une tâche</NavLink>
+            </div>
+            <div className="theme-action navlink" onClick={toggleTheme}>
+                {theme === "light" &&
+                    <Moon />
+                }
+                {theme === "dark" &&
+                    <Sun />
+                }
+            </div>
         </div>
     )
 }

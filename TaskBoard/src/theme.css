@@ -1,0 +1,19 @@
+:root{
+    --primary: #2563EB;
+    --primary--light: #DBEAFE;
+    --text-primary: #1E293B;
+
+    --secondary: #64748B;
+    --secondary--light: #F1F5F9;
+    --text-secondary: #475569;
+}
+
+.app.dark{
+    --primary: #8B5CF6;
+    --primary--light: #312E81;
+    --text-primary: #F1F5F9;
+
+    --secondary: #6B7280;
+    --secondary--light: #1F1F2E;
+    --text-secondary: #9CA3AF;
+}

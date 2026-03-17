@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import Home from './Pages/Home/Home.jsx';
 import Login from './Pages/Login/Login';
 import SignIn from './Pages/SignIn/SignIn.jsx';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import NavBar from './Components/NavBar/Home/NavBar.jsx';
 import Layout from './Pages/Product/Layout.jsx';
 import LayoutHome from './Pages/Home/Layout.jsx';
@@ -11,11 +11,10 @@ import List from './Pages/Product/List/List.jsx';
 import Detail from './Pages/Product/Detail/Detail.jsx';
 import Form from './Pages/Product/Form/Form.jsx';
 import Modal from './Components/Modal/Modal.jsx';
-import AuthContext from './Context/auth.context.jsx';
+import { AuthProvider } from './Context/auth.context.jsx';
 
 export default function App() {
   const modalRef = useRef();
-  const [auth, setAuth] = useState();
 
   useEffect(() => {
     modalRef.current.disableNativeClose();
@@ -32,7 +31,7 @@ export default function App() {
 
   return (
     <div className='app'>
-      <AuthContext.Provider value={{ auth, setAuth }}>
+      <AuthProvider>
         <BrowserRouter>
           <NavBar />
           <Routes>
@@ -55,7 +54,7 @@ export default function App() {
             <button onClick={handleRead}>J'ai compris</button>
           </div>
         </Modal>
-      </AuthContext.Provider>
+      </AuthProvider>
     </div>
   )
 }

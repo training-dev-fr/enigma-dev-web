@@ -1,11 +1,11 @@
-import { useContext, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import "./Login.css"
 import PasswordField from "../../Components/PasswordField";
 import { Link, useNavigate } from "react-router";
-import AuthContext from "../../Context/auth.context";
+import {useAuth} from "../../Context/auth.context";
 
 export default function Login() {
-    const {setAuth} = useContext(AuthContext);
+    const {login} = useAuth();
     const passwordRef = useRef();
     const emailRef = useRef();
     const [email, setEmail] = useState("");
@@ -21,7 +21,7 @@ export default function Login() {
         if(!passwordRef.current.reportValidity(/[a-zA-Z0-9]{6,}/)){
             return alert("Format de mot de passe invalide : " + passwordRef.current.getValue())
         }
-        setAuth("123aze456ert789iop");
+        login("123aze456ert789iop");
         navigate("/Product")
     }
     return (

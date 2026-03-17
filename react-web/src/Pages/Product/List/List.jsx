@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react"
+import {  useEffect, useState } from "react"
 import "./List.css"
 import User from './../../../Components/User';
-import AuthContext from "../../../Context/auth.context";
+import {useAuth} from "../../../Context/auth.context";
 
 export default function UserList() {
     const [userList, setUserList] = useState([]);
     const [term, setTerm] = useState("");
-    const {auth} = useContext(AuthContext);
+    const {auth} = useAuth();
 
     useEffect(() => {
         console.log(auth);
